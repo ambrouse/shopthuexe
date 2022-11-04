@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="qlshopxeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ten" Type="varchar" MaxLength="250" />
+    <Property Name="pass" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="hang">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ten" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="loai">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ten" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="sanpham">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ten" Type="nvarchar" MaxLength="250" />
+    <Property Name="gia" Type="money" />
+    <Property Name="loai" Type="int" />
+    <Property Name="hang" Type="int" />
+    <Property Name="imgurl_1" Type="nvarchar" MaxLength="250" />
+    <Property Name="imgurl_2" Type="nvarchar" MaxLength="250" />
+    <Property Name="imgurl_3" Type="nvarchar" MaxLength="250" />
+    <Property Name="imgurl_4" Type="nvarchar" MaxLength="250" />
+    <Property Name="imgurl_5" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <Association Name="FK__sanpham__hang__3E52440B">
+    <End Role="hang" Type="Self.hang" Multiplicity="0..1" />
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hang">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sanpham">
+        <PropertyRef Name="hang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sanpham__imgurl__3D5E1FD2">
+    <End Role="loai" Type="Self.loai" Multiplicity="0..1" />
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loai">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sanpham">
+        <PropertyRef Name="loai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="qlshopxeModelStoreContainer">
+    <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hang" EntityType="Self.hang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="loai" EntityType="Self.loai" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sanpham" EntityType="Self.sanpham" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__sanpham__hang__3E52440B" Association="Self.FK__sanpham__hang__3E52440B">
+      <End Role="hang" EntitySet="hang" />
+      <End Role="sanpham" EntitySet="sanpham" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sanpham__imgurl__3D5E1FD2" Association="Self.FK__sanpham__imgurl__3D5E1FD2">
+      <End Role="loai" EntitySet="loai" />
+      <End Role="sanpham" EntitySet="sanpham" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

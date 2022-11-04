@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="qlshopxeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ten" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="pass" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="hang">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ten" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="sanphams" Relationship="Self.FK__sanpham__hang__3E52440B" FromRole="hang" ToRole="sanpham" />
+  </EntityType>
+  <EntityType Name="loai">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ten" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="sanphams" Relationship="Self.FK__sanpham__imgurl__3D5E1FD2" FromRole="loai" ToRole="sanpham" />
+  </EntityType>
+  <EntityType Name="sanpham">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ten" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="gia" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="loai" Type="Int32" />
+    <Property Name="hang" Type="Int32" />
+    <NavigationProperty Name="hang1" Relationship="Self.FK__sanpham__hang__3E52440B" FromRole="sanpham" ToRole="hang" />
+    <NavigationProperty Name="loai1" Relationship="Self.FK__sanpham__imgurl__3D5E1FD2" FromRole="sanpham" ToRole="loai" />
+    <Property Name="imgurl_1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="imgurl_2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="imgurl_3" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="imgurl_4" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="imgurl_5" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK__sanpham__hang__3E52440B">
+    <End Role="hang" Type="Self.hang" Multiplicity="0..1" />
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hang">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sanpham">
+        <PropertyRef Name="hang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sanpham__imgurl__3D5E1FD2">
+    <End Role="loai" Type="Self.loai" Multiplicity="0..1" />
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loai">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sanpham">
+        <PropertyRef Name="loai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="qlshopxeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="admins" EntityType="Self.admin" />
+    <EntitySet Name="hangs" EntityType="Self.hang" />
+    <EntitySet Name="loais" EntityType="Self.loai" />
+    <EntitySet Name="sanphams" EntityType="Self.sanpham" />
+    <AssociationSet Name="FK__sanpham__hang__3E52440B" Association="Self.FK__sanpham__hang__3E52440B">
+      <End Role="hang" EntitySet="hangs" />
+      <End Role="sanpham" EntitySet="sanphams" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sanpham__imgurl__3D5E1FD2" Association="Self.FK__sanpham__imgurl__3D5E1FD2">
+      <End Role="loai" EntitySet="loais" />
+      <End Role="sanpham" EntitySet="sanphams" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

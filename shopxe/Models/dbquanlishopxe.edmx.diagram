@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="53e0f0a0bdc3466981e71aeaf0cb6e98" Name="Diagram1">
+        <EntityTypeShape EntityType="qlshopxeModel.admin" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qlshopxeModel.hang" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="qlshopxeModel.loai" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="qlshopxeModel.sanpham" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="qlshopxeModel.FK__sanpham__hang__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="qlshopxeModel.FK__sanpham__imgurl__3D5E1FD2" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

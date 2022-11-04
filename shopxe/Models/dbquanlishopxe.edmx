@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="qlshopxeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ten" Type="varchar" MaxLength="250" />
+          <Property Name="pass" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="hang">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ten" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="loai">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ten" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="sanpham">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ten" Type="nvarchar" MaxLength="250" />
+          <Property Name="gia" Type="money" />
+          <Property Name="loai" Type="int" />
+          <Property Name="hang" Type="int" />
+          <Property Name="imgurl_1" Type="nvarchar" MaxLength="250" />
+          <Property Name="imgurl_2" Type="nvarchar" MaxLength="250" />
+          <Property Name="imgurl_3" Type="nvarchar" MaxLength="250" />
+          <Property Name="imgurl_4" Type="nvarchar" MaxLength="250" />
+          <Property Name="imgurl_5" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK__sanpham__hang__3E52440B">
+          <End Role="hang" Type="Self.hang" Multiplicity="0..1" />
+          <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hang">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sanpham">
+              <PropertyRef Name="hang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sanpham__imgurl__3D5E1FD2">
+          <End Role="loai" Type="Self.loai" Multiplicity="0..1" />
+          <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loai">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sanpham">
+              <PropertyRef Name="loai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="qlshopxeModelStoreContainer">
+          <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hang" EntityType="Self.hang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="loai" EntityType="Self.loai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sanpham" EntityType="Self.sanpham" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__sanpham__hang__3E52440B" Association="Self.FK__sanpham__hang__3E52440B">
+            <End Role="hang" EntitySet="hang" />
+            <End Role="sanpham" EntitySet="sanpham" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sanpham__imgurl__3D5E1FD2" Association="Self.FK__sanpham__imgurl__3D5E1FD2">
+            <End Role="loai" EntitySet="loai" />
+            <End Role="sanpham" EntitySet="sanpham" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="qlshopxeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ten" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="pass" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="hang">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ten" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="sanphams" Relationship="Self.FK__sanpham__hang__3E52440B" FromRole="hang" ToRole="sanpham" />
+        </EntityType>
+        <EntityType Name="loai">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ten" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="sanphams" Relationship="Self.FK__sanpham__imgurl__3D5E1FD2" FromRole="loai" ToRole="sanpham" />
+        </EntityType>
+        <EntityType Name="sanpham">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ten" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="gia" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="loai" Type="Int32" />
+          <Property Name="hang" Type="Int32" />
+          <NavigationProperty Name="hang1" Relationship="Self.FK__sanpham__hang__3E52440B" FromRole="sanpham" ToRole="hang" />
+          <NavigationProperty Name="loai1" Relationship="Self.FK__sanpham__imgurl__3D5E1FD2" FromRole="sanpham" ToRole="loai" />
+          <Property Name="imgurl_1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="imgurl_2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="imgurl_3" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="imgurl_4" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="imgurl_5" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__sanpham__hang__3E52440B">
+          <End Role="hang" Type="Self.hang" Multiplicity="0..1" />
+          <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hang">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sanpham">
+              <PropertyRef Name="hang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sanpham__imgurl__3D5E1FD2">
+          <End Role="loai" Type="Self.loai" Multiplicity="0..1" />
+          <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loai">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sanpham">
+              <PropertyRef Name="loai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="qlshopxeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admins" EntityType="Self.admin" />
+          <EntitySet Name="hangs" EntityType="Self.hang" />
+          <EntitySet Name="loais" EntityType="Self.loai" />
+          <EntitySet Name="sanphams" EntityType="Self.sanpham" />
+          <AssociationSet Name="FK__sanpham__hang__3E52440B" Association="Self.FK__sanpham__hang__3E52440B">
+            <End Role="hang" EntitySet="hangs" />
+            <End Role="sanpham" EntitySet="sanphams" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sanpham__imgurl__3D5E1FD2" Association="Self.FK__sanpham__imgurl__3D5E1FD2">
+            <End Role="loai" EntitySet="loais" />
+            <End Role="sanpham" EntitySet="sanphams" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="qlshopxeModelStoreContainer" CdmEntityContainer="qlshopxeEntities">
+          <EntitySetMapping Name="admins">
+            <EntityTypeMapping TypeName="qlshopxeModel.admin">
+              <MappingFragment StoreEntitySet="admin">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ten" ColumnName="ten" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hangs">
+            <EntityTypeMapping TypeName="qlshopxeModel.hang">
+              <MappingFragment StoreEntitySet="hang">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ten" ColumnName="ten" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="loais">
+            <EntityTypeMapping TypeName="qlshopxeModel.loai">
+              <MappingFragment StoreEntitySet="loai">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ten" ColumnName="ten" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sanphams">
+            <EntityTypeMapping TypeName="qlshopxeModel.sanpham">
+              <MappingFragment StoreEntitySet="sanpham">
+                <ScalarProperty Name="imgurl_5" ColumnName="imgurl_5" />
+                <ScalarProperty Name="imgurl_4" ColumnName="imgurl_4" />
+                <ScalarProperty Name="imgurl_3" ColumnName="imgurl_3" />
+                <ScalarProperty Name="imgurl_2" ColumnName="imgurl_2" />
+                <ScalarProperty Name="imgurl_1" ColumnName="imgurl_1" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ten" ColumnName="ten" />
+                <ScalarProperty Name="gia" ColumnName="gia" />
+                <ScalarProperty Name="loai" ColumnName="loai" />
+                <ScalarProperty Name="hang" ColumnName="hang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
