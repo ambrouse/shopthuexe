@@ -101,7 +101,9 @@
     <Content Include="accect\css\bootstrap-reboot.min.css" />
     <Content Include="accect\css\bootstrap.css" />
     <Content Include="accect\css\bootstrap.min.css" />
+    <Content Include="accect\css\cardsanpham.css" />
     <Content Include="accect\css\cssreset.css" />
+    <Content Include="accect\css\dangnhap.css" />
     <Content Include="accect\css\default-skin.css" />
     <Content Include="accect\css\font-awesome.min.css" />
     <Content Include="accect\css\icomoon.css" />
@@ -109,6 +111,7 @@
     <Content Include="accect\css\jquery.fancybox.min.css" />
     <Content Include="accect\css\jquery.mCustomScrollbar.min.css" />
     <Content Include="accect\css\listad.css" />
+    <Content Include="accect\css\main_chiTiet.css" />
     <Content Include="accect\css\meanmenu.css" />
     <Content Include="accect\css\navbaradmin.css" />
     <Content Include="accect\css\nice-select.css" />
@@ -121,6 +124,11 @@
     <Content Include="accect\images\banner-bg.png" />
     <Content Include="accect\images\banner-bg1.png" />
     <Content Include="accect\images\bg-1.png" />
+    <Content Include="accect\js\main_chiTiet.js" />
+    <Content Include="imgxe\chiTiet_ab01.jpg" />
+    <Content Include="imgxe\chiTiet_ab02.jpg" />
+    <Content Include="imgxe\chiTiet_vs01.jpg" />
+    <Content Include="imgxe\chiTiet_vs02.jpg" />
     <Content Include="accect\images\contact-bg.png" />
     <Content Include="accect\images\fb-icon.png" />
     <Content Include="accect\images\footer-logo.png" />
@@ -142,6 +150,7 @@
     <Content Include="accect\js\popper.min.js" />
     <Content Include="accect\js\slider-setting.js" />
     <Content Include="Global.asax" />
+    <Content Include="imgxe\lo_go_xe.png" />
     <Content Include="Models\dbquanlishopxe.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>dbquanlishopxe.Context.cs</LastGenOutput>
@@ -157,8 +166,15 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
-    <Compile Include="Areas\admin\Controllers\chuyendoi.cs" />
+    <Compile Include="Controllers\ChitietController.cs" />
+    <Compile Include="Areas\admin\Controllers\DangnhapadminController.cs" />
+    <Compile Include="Areas\admin\Controllers\QuanlyhangController.cs" />
+    <Compile Include="Areas\admin\Controllers\QuanlyloaiController.cs" />
+    <Compile Include="Areas\admin\hamxuli\chuyendoi.cs" />
     <Compile Include="Areas\admin\Controllers\QuanlyxeController.cs" />
+    <Compile Include="Areas\admin\hamxuli\kiemtradangnhap.cs" />
+    <Compile Include="Areas\admin\hamxuli\kiemtramatkhau.cs" />
+    <Compile Include="Areas\admin\hamxuli\kiemtrasesion.cs" />
     <Compile Include="Controllers\DanhsachxeController.cs" />
     <Compile Include="Controllers\TrangchuController.cs" />
     <Compile Include="Global.asax.cs">
@@ -218,10 +234,13 @@
     </Content>
     <Content Include="Areas\admin\Views\Quanlyxe\Them.cshtml" />
     <Content Include="Areas\admin\Views\Quanlyxe\Update.cshtml" />
+    <Content Include="Areas\admin\Views\Quanlyloai\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Quanlyhang\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Dangnhapadmin\Index.cshtml" />
+    <Content Include="Views\Chitiet\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\layout\layout.cshtml" />
     <Content Include="Views\Trangchu\Index.cshtml" />
-    <Content Include="Views\Trangchu\shop.cshtml" />
     <Content Include="Views\Danhsachxe\Danhsachxemoinhat.cshtml" />
     <Content Include="Views\Danhsachxe\timkiem.cshtml" />
     <None Include="Web.Debug.config">
@@ -234,7 +253,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\Data\" />
-    <Folder Include="imgxe\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

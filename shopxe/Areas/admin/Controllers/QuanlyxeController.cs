@@ -7,21 +7,27 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using shopxe.Models;
-using shopxe.Areas.admin.Controllers;
+using shopxe.Areas.admin.hamxuli;
+
 namespace shopxe.Areas.admin.Controllers
 {
     public class QuanlyxeController : Controller
     {
         // GET: admin/Quanlydulieu
+        [kiemtradangnhap()]
         public ActionResult Index()
         {
             qlshopxeEntities db = new qlshopxeEntities();
             return View(db.sanphams.ToList());
         }
+        [kiemtradangnhap()]
         public ActionResult Them() {
+            qlshopxeEntities db = new qlshopxeEntities();
+           
             return View(new sanpham());
         }
         [HttpPost]
+        [kiemtradangnhap]
         public ActionResult Them(sanpham model, HttpPostedFileBase file_1, HttpPostedFileBase file_2, HttpPostedFileBase file_3) {
             qlshopxeEntities db = new qlshopxeEntities();
             
@@ -39,6 +45,7 @@ namespace shopxe.Areas.admin.Controllers
                 return View(model);
             }
             String x = Server.MapPath("/imgxe/");
+            var chuyendoi = new chuyendoi();
             String y_1 = x + chuyendoi.convertToUnSign3(file_1.FileName.ToLower());
             String y_2 = x + chuyendoi.convertToUnSign3(file_2.FileName.ToLower());
             String y_3 = x + chuyendoi.convertToUnSign3(file_3.FileName.ToLower());
@@ -52,13 +59,15 @@ namespace shopxe.Areas.admin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [kiemtradangnhap()]
         public ActionResult Update(int id) {
-  
             qlshopxeEntities db = new qlshopxeEntities();
+           
             var update = db.sanphams.Find(id);
             return View(update);
         }
         [HttpPost]
+        [kiemtradangnhap()]
         public ActionResult Update(sanpham model, HttpPostedFileBase file_1, HttpPostedFileBase file_2, HttpPostedFileBase file_3)
         {
             qlshopxeEntities db = new qlshopxeEntities();
@@ -73,7 +82,8 @@ namespace shopxe.Areas.admin.Controllers
                 ViewBag.err = "ban phai nhap lai cac anh khi update";
                 return View(model);
             }
-                String x = Server.MapPath("/imgxe/");
+            var chuyendoi = new chuyendoi();
+            String x = Server.MapPath("/imgxe/");
                 String y_1 = x + chuyendoi.convertToUnSign3(file_1.FileName.ToLower());
                 String y_2 = x + chuyendoi.convertToUnSign3(file_2.FileName.ToLower());
                 String y_3 = x + chuyendoi.convertToUnSign3(file_3.FileName.ToLower());
@@ -89,6 +99,7 @@ namespace shopxe.Areas.admin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [kiemtradangnhap()]
         public ActionResult Delete(int id) {
             qlshopxeEntities db = new qlshopxeEntities();
             var delete = db.sanphams.Find(id);

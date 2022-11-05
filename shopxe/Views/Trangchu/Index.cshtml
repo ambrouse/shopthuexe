@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<shopxe.Models.sanpham>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/layout/layout.cshtml";
@@ -30,13 +30,14 @@
                 </div>
             </div>
             <a class="carousel-control-prev" href="#costum_slider" role="button" data-slide="prev">
-                <i class=""><img src="images/left-arrow.png"></i>
+                <i class=""><img src="~/accect/images/left-arrow.png"></i>
             </a>
             <a class="carousel-control-next" href="#costum_slider" role="button" data-slide="next">
-                <i class=""><img src="images/right-arrow.png"></i>
+                <i class=""><img src="~/accect/images/right-arrow.png"></i>
             </a>
         </div>
     </div>
+</div>
     <!-- furnitures section start -->
     <div class="furnitures_section layout_padding">
         <div class="container">
@@ -46,7 +47,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="container_main">
-                            <img src="images/img-2.png" alt="Avatar" class="image">
+                            <img src="~/imgxe/chiTiet_ab01.jpg" alt="Avatar" class="image">
                             <div class="overlay">
                                 <a href="#" class="icon" title="User Profile">
                                     <i class="fa fa-search"></i>
@@ -58,7 +59,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="container_main">
-                            <img src="" alt="Avatar" class="image">
+                            <img src="~/imgxe/chiTiet_vs01.jpg" alt="Avatar" class="image">
                             <div class="overlay">
                                 <a href="#" class="icon" title="User Profile">
                                     <i class="fa fa-search"></i>
@@ -87,7 +88,7 @@
     <!-- projects section start -->
     <div class="projects_section layout_padding">
         <div class="container">
-            <h1 class="our_text">cac loai xe ga</h1>
+            <h1 class="our_text">cac loai xe </h1>
             <p class="ipsum_text">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
             <div id="main_slider" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
@@ -97,7 +98,7 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="container_main1">
-                                            <img src="images/img-4.png" alt="Avatar" class="image" style="width:100%">
+                                            <img src="~/imgxe/chiTiet_ab02.jpg" alt="Avatar" class="image" style="width:100%">
                                             <h1 class="modern_text">xe 1</h1>
                                             <div class="middle">
                                                 <div class="text">VIEW MORE</div>
@@ -106,7 +107,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="container_main1">
-                                            <img src="images/img-5.png" alt="Avatar" class="image" style="width:100%">
+                                            <img src="~/imgxe/chiTiet_vs02.jpg" alt="Avatar" class="image" style="width:100%">
                                             <h1 class="modern_text">xe 2</h1>
                                             <div class="middle">
                                                 <div class="text">VIEW MORE</div>
@@ -115,7 +116,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="container_main1">
-                                            <img src="images/img-6.png" alt="Avatar" class="image" style="width:100%">
+                                            <img src="~/imgxe/chiTiet_vs01.jpg" alt="Avatar" class="image" style="width:100%">
                                             <h1 class="modern_text">xe 3</h1>
                                             <div class="middle">
                                                 <div class="text">VIEW MORE</div>
@@ -126,41 +127,43 @@
                             </div>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <div class="projects_section2">
-                            <div class="container_main1">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="container_main1">
-                                            <img src="images/img-4.png" alt="Avatar" class="image" style="width:100%">
-                                            <h1 class="modern_text">xe 4</h1>
-                                            <div class="middle">
-                                                <div class="text">VIEW MORE</div>
+                    @foreach (var i in Model) {
+                        <div class="carousel-item">
+                            <div class="projects_section2">
+                                <div class="container_main1">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="container_main1">
+                                                <img src="@i.imgurl_1" alt="Avatar" class="image" style="width:100%">
+                                                <h1 class="modern_text">@i.ten</h1>
+                                                <div class="middle">
+                                                    <div class="text">VIEW MORE</div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="container_main1">
-                                            <img src="images/img-5.png" alt="Avatar" class="image" style="width:100%">
-                                            <h1 class="modern_text">xe 5</h1>
-                                            <div class="middle">
-                                                <div class="text">VIEW MORE</div>
+                                        <div class="col-sm-4">
+                                            <div class="container_main1">
+                                                <img src="@i.imgurl_2" alt="Avatar" class="image" style="width:100%">
+                                                <h1 class="modern_text">@i.ten</h1>
+                                                <div class="middle">
+                                                    <div class="text">VIEW MORE</div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="container_main1">
-                                            <img src="images/img-6.png" alt="Avatar" class="image" style="width:100%">
-                                            <h1 class="modern_text">xe 6</h1>
-                                            <div class="middle">
-                                                <div class="text">VIEW MORE</div>
+                                        <div class="col-sm-4">
+                                            <div class="container_main1">
+                                                <img src="@i.imgurl_3" alt="Avatar" class="image" style="width:100%">
+                                                <h1 class="modern_text">@i.ten</h1>
+                                                <div class="middle">
+                                                    <div class="text">VIEW MORE</div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    }
                 </div>
                 <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
                     <i class="fa fa-angle-left"></i>
@@ -187,64 +190,12 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="image_9"><img src="images/banner-bg.png"></div>
+                    <div class="image_9"><img src="~/imgxe/chiTiet_vs02.jpg"></div>
                 </div>
             </div>
         </div>
     </div>
     <!-- contact section end -->
-    <!-- footer section start -->
-    <div class="footer_section layout_padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="fooer_logo"><img src="images/footer-logo.png"></div>
-                    <p class="footer_lorem_text">
-                        There are many variat
-                        ions of passages of L
-                        orem Ipsum available
-                        , but the majority h
-                        ave suffered altera
-                        tion in some form, by
-                    </p>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <h1 class="customer_text">LET US HELP YOU</h1>
-                    <p class="footer_lorem_text">
-                        There are many variat
-                        ions of passages of L
-                        orem Ipsum available
-                        , but the majority h
-                        ave suffered altera
-                        tion in some form, by
-                    </p>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <h1 class="customer_text">INFORMATION</h1>
-                    <p class="footer_lorem_text1">
-                        About Us<br>
-                        Careers<br>
-                        Sell on shopee<br>
-                        Press & News<br>
-                        Competitions<br>
-                        Terms & Conditions
-                    </p>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <h1 class="customer_text">OUR Design</h1>
-                    <p class="footer_lorem_text">
-                        There are many variat
-                        ions of passages of L
-                        orem Ipsum available
-                        , but the majority h
-                        ave suffered altera
-                        tion in some form, by
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--  footer section end -->
     <!-- Javascript files-->
     @section js{
         <script src="~/accect/js/jquery.min.js"></script>

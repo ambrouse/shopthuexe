@@ -4,24 +4,24 @@
     Layout = "~/Views/layout/layout.cshtml";
 }
 @section css{
-    <link rel="stylesheet" href="" />
-    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" href="~/accect/css/cssreset.css"/>
+    <link rel="stylesheet" href="~/accect/css/cardsanpham.css"/>
     }
 <div class="card">
     @foreach (var i in Model) { 
         <div class="card__item">
             <div class="img">
-                <img src="@i.imgurl" alt="">
+                <img src="@i.imgurl_1" alt="">
             </div>
             <div class="name">
                 <p>@i.ten</p>
-                <a href=""></a>
+                <a href="~/Chitiet/?id=@i.id"></a>
             </div>
             <div class="gia">
-                <p>@i.gia / ngay</p>
+                <p>@i.loai1.ten</p>
             </div>
-            <div class="danhgia">
-                <p>10/10 &#10032;</p>
+            <div class="gia">
+                <p>@i.hang1.ten</p>
             </div>
         </div>
 }

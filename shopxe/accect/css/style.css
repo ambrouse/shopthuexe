@@ -233,6 +233,7 @@ button {
     background-color: transparent !important;
 }
 .logo {
+    height:100%;
     width: 25%;
     float: left;
 }
@@ -951,7 +952,7 @@ textarea#comment::placeholder {
     float: left;
     background-color: #313131;
     height: auto;
-    padding-bottom: 90px;
+    padding-bottom: 200px;
 }
 .fooer_logo {
     width: 100%;

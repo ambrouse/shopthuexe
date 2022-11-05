@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using shopxe.Models;
 namespace shopxe.Controllers
 {
     public class TrangchuController : Controller
@@ -11,10 +11,8 @@ namespace shopxe.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            qlshopxeEntities db = new qlshopxeEntities();
+            return View(db.sanphams.ToList());
         }
-        public ActionResult Shop() {
-            return View();
-}
     }
 }

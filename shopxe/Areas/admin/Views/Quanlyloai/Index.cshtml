@@ -1,0 +1,22 @@
+﻿@model IEnumerable<shopxe.Models.loai>
+@{
+    shopxe.Models.qlshopxeEntities db = new shopxe.Models.qlshopxeEntities();
+    ViewBag.Title = "danh sach loai xe";
+    Layout = "~/Areas/admin/Views/layout/layout.cshtml";
+}
+@section css{
+    <link rel="stylesheet" href="~/accect/css/listad.css" />
+}
+<div class="list">
+    <div class="list__item">
+        <p>id</p>
+        <p>ten</p>
+    </div>
+    @foreach (var i in db.loais)
+    {
+        <div class="list__item">
+            <p>@i.id</p>
+            <p>@i.ten</p>
+        </div>
+    }
+</div>
